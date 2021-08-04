@@ -61,4 +61,3 @@ To load the grammar, given its grammar file:
 G = Grammar()
 G.from_grammar_file('Parantheses.grammar')
 ```
-```
