@@ -27,6 +27,16 @@ class Grammar(object):
 
         self.grammar = productions
 
+    def to_grammar(self, filename : str):
+        with open(filename, 'w', encoding='utf-8') as outfile:
+            for axiom in self.grammar.keys():
+                productions = self.grammar.get(axiom)
+                for production in productions:
+                    if not production: production = "EMPTY"
+                    production_str = f"{axiom} -> {production}\n"
+                    outfile.write(production_str)
+            outfile.close()
+        
     def from_dict(self, productions : dict):
         self.grammar = productions
 
