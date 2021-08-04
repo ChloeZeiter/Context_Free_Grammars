@@ -40,30 +40,10 @@ class Grammar(object):
     def from_dict(self, productions : dict):
         self.grammar = productions
 
-    def parse_tokens(self, string : str)->list:
-        max_substr_len = max([len(s) for s in self.grammar.keys()])
-        tokens = []
-        for ix in range(len(string)):
-            for lookahead in range(max_substr_len):
-                if string[ix : lookahead] in self.grammar.keys():
-                    tokens.append(string[ix : lookahead])
-                else:
-                    tokens.append(string[ix])
-
-        return tokens
-
     def transform(self, in_ : str, MAX_EPOCH : int)->str:
         epoch = 0
         while epoch < MAX_EPOCH:
-            tokens = self.parse_tokens(in_)
-            for token_ix in range(len(tokens)):
-                token = tokens[token_ix]
-                try:
-                    production = random.choice(self.grammar.get(token))
-                    tokens[token_ix] = production
-                except TypeError:
-                    continue
-            in_ = "".join(tokens)
+            for axiom in self.grammar.keys():
+                in_ = in_.replace(axiom, random.choice(self.grammar.get(axiom)), 1)
             epoch += 1
-
         return in_
