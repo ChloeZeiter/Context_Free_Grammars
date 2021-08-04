@@ -35,3 +35,30 @@ paran_productions = {
 G = Grammar(paran_productions)
 generation = G.transform('S', 10)
 ```
+### .grammar file format
+The .grammar file format is a structured text based file format intended to encode the production rules of a context free grammar. The syntax is of the form:
+```
+non_terminal -> production_output
+``` 
+In which the empty string is written as "EMPTY"
+Grammars can be serialized as .grammar files easily:
+```py
+paran_productions = {
+  'S' : ['SS', '(S)', '()', '']
+}
+G = Grammar(paran_productions)
+G.to_grammar('Parantheses.grammar')
+```
+Which generates a .grammar file:
+```
+S -> SS
+S -> (S)
+S -> ()
+S -> EMPTY
+```
+To load the grammar, given its grammar file:
+```py
+G = Grammar()
+G.from_grammar_file('Parantheses.grammar')
+```
+```
