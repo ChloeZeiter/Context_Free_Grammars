@@ -1,7 +1,7 @@
 # Context_Free_Grammars
 
 ### Context Free Grammars
-[Context free grammars](https://en.wikipedia.org/wiki/Context-free_grammar) are a type of formal grammar. The production rules are of the form A -> α. Where A is a nonterminal character, and α is a terminal character (it is constant). The grammar is defined by a tuple G = (V, Σ, R, S) in which V is a set of all nonterminal characters, Σ is a set of terminal characters, R describes the production rules of the grammar, and S is the start string. 
+[Context free grammars](https://en.wikipedia.org/wiki/Context-free_grammar) are a type of formal grammar. The production rules are of the form A -> α. Where A is a nonterminal character, and α is a string of terminal and or non-terminal characters. The grammar is defined by a tuple G = (V, Σ, R, S) in which V is a set of all nonterminal characters, Σ is a set of terminal characters, R describes the production rules of the grammar, and S is the start string. 
 
 ### The Parantheses Grammar
 The following cfg generates well formed parentheses. Its production rules are:
